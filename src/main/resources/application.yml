@@ -1,0 +1,31 @@
+server:
+  port: 9092
+spring:
+  application:
+    name: payment-api
+  cloud:
+    openfeign:
+      client:
+        config:
+          mercadopago:
+            defaultRequestHeaders:
+              authorization: Bearer ${application.mercadopago-api.accessToken}
+            url: ${application.mercadopago-api.url}
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment_api
+    username: postgres
+    password: postgres
+  flyway:
+    enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+application:
+  mercadopago-api:
+      url: https://api.mercadopago.com
+      userId: fake
+      posId: fake
+      accessToken: fake
+      callbackUrl: fake
