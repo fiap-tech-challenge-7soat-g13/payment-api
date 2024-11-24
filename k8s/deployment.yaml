@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-api
+  labels:
+    app: payment-api
+spec:
+  selector:
+    matchLabels:
+      app: payment-api
+  template:
+    metadata:
+      labels:
+        app: payment-api
+    spec:
+      containers:
+        - name: payment-api
+          image: cristianobarros/payment-api
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 9092
+          envFrom:
+            - secretRef:
+                name: payment-api
+          startupProbe:
+            httpGet:
+              port: http
+              path: /actuator/health
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /actuator/health
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /actuator/health
+          resources:
+            requests:
+              cpu: 500m
+              memory: 256Mi
+            limits:
+              cpu: 1000m
+              memory: 512Mi
