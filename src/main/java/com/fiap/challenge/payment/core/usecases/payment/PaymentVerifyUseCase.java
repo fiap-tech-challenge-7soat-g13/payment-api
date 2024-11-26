@@ -1,5 +1,6 @@
 package com.fiap.challenge.payment.core.usecases.payment;
 
+import com.fiap.challenge.payment.app.adapter.output.queue.PaymentStatusChangedEventDispatcher;
 import com.fiap.challenge.payment.core.common.exception.EntityNotFoundException;
 import com.fiap.challenge.payment.core.domain.Payment;
 import com.fiap.challenge.payment.core.domain.enums.PaymentStatus;
@@ -14,6 +15,8 @@ import java.util.UUID;
 public class PaymentVerifyUseCase {
 
     private final PaymentGateway paymentGateway;
+
+    private final PaymentStatusChangedEventDispatcher paymentStatusChangedEventDispatcher;
 
     public void execute(UUID uuid, String id) {
 
@@ -37,6 +40,7 @@ public class PaymentVerifyUseCase {
         payment.setStatus(newStatus);
 
         paymentGateway.save(payment);
+        paymentStatusChangedEventDispatcher.dispatch(payment);
     }
 
 }
