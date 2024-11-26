@@ -1,5 +1,6 @@
 package com.fiap.challenge.payment.core.usecases.payment;
 
+import com.fiap.challenge.payment.app.adapter.output.queue.PaymentStatusChangedEventDispatcher;
 import com.fiap.challenge.payment.core.domain.Payment;
 import com.fiap.challenge.payment.core.domain.enums.PaymentStatus;
 import com.fiap.challenge.payment.core.gateways.PaymentGateway;
@@ -14,8 +15,9 @@ import static org.mockito.Mockito.*;
 class PaymentVerifyUseCaseTest {
 
     private final PaymentGateway paymentGateway = mock(PaymentGateway.class);
+    private final PaymentStatusChangedEventDispatcher paymentStatusChangedEventDispatcher = mock(PaymentStatusChangedEventDispatcher.class);
 
-    private final PaymentVerifyUseCase paymentVerifyUseCase = new PaymentVerifyUseCase(paymentGateway);
+    private final PaymentVerifyUseCase paymentVerifyUseCase = new PaymentVerifyUseCase(paymentGateway, paymentStatusChangedEventDispatcher);
 
     @Test
     void shouldNotSaveAnything() {
