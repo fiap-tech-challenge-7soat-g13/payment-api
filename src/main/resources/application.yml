@@ -9,8 +9,8 @@ spring:
         config:
           mercadopago:
             defaultRequestHeaders:
-              authorization: Bearer ${application.mercadopago-api.accessToken}
-            url: ${application.mercadopago-api.url}
+              authorization: Bearer ${application.mercadopago.accessToken}
+            url: ${application.mercadopago.url}
   datasource:
     url: jdbc:postgresql://localhost:5432/payment_api
     username: postgres
@@ -22,16 +22,15 @@ spring:
     hibernate:
       ddl-auto: validate
   rabbitmq:
-    host: localhost
-    port: 5672
+    addresses: amqps://b-6b369879-a388-49f0-8c8b-505e9ee77db3.mq.us-east-1.amazonaws.com:5671
     username: guest
     password: guest
 
 application:
   queue:
-    payment-status-changed:
+    paymentStatusChanged:
       name: payment-status-changed
-  mercadopago-api:
+  mercadopago:
       url: https://api.mercadopago.com
       userId: fake
       posId: fake
