@@ -14,7 +14,7 @@ public class PaymentStatusChangedEventDispatcherImpl implements PaymentStatusCha
 
     private final String paymentStatusChangedQueue;
 
-    public PaymentStatusChangedEventDispatcherImpl(RabbitTemplate rabbitTemplate, @Value("${application.queue.payment-status-changed.name}") String paymentStatusChangedQueue) {
+    public PaymentStatusChangedEventDispatcherImpl(RabbitTemplate rabbitTemplate, @Value("${application.queue.paymentStatusChanged.name}") String paymentStatusChangedQueue) {
         this.rabbitTemplate = rabbitTemplate;
         this.paymentStatusChangedQueue = paymentStatusChangedQueue;
     }

@@ -16,13 +16,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class MercadoPagoClient implements PaymentClient {
 
-    @Value("${application.mercadopago-api.userId}")
+    @Value("${application.mercadopago.userId}")
     private String userId;
 
-    @Value("${application.mercadopago-api.posId}")
+    @Value("${application.mercadopago.posId}")
     private String posId;
 
-    @Value("${application.mercadopago-api.callbackUrl}")
+    @Value("${application.mercadopago.callbackUrl}")
     private String callbackUrl;
 
     private final MercadoPagoFeignClient client;
