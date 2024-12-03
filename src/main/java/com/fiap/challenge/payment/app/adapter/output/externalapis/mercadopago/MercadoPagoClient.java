@@ -7,12 +7,14 @@ import com.fiap.challenge.payment.core.domain.OrderProduct;
 import com.fiap.challenge.payment.core.domain.enums.PaymentStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
+@Profile("!test")
 @RequiredArgsConstructor
 public class MercadoPagoClient implements PaymentClient {
 

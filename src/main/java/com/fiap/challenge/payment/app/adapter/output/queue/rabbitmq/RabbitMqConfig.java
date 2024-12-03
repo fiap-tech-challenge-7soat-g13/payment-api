@@ -2,7 +2,9 @@ package com.fiap.challenge.payment.app.adapter.output.queue.rabbitmq;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -14,6 +16,11 @@ public class RabbitMqConfig {
     @PostConstruct
     public void init() {
         rabbitTemplate.setChannelTransacted(true);
+    }
+
+    @Bean
+    public RabbitAdmin rabbitAdmin(RabbitTemplate rabbitTemplate) {
+        return new RabbitAdmin(rabbitTemplate);
     }
 
 }

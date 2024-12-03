@@ -22,7 +22,7 @@ spring:
     hibernate:
       ddl-auto: validate
   rabbitmq:
-    addresses: amqps://b-6b369879-a388-49f0-8c8b-505e9ee77db3.mq.us-east-1.amazonaws.com:5671
+    addresses: amqp://localhost:5672
     username: guest
     password: guest
 
