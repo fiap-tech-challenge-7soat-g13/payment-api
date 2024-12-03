@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DataHelper {
@@ -28,7 +29,7 @@ public class DataHelper {
 
     public static CustomerRequest createCustomerRequest() {
         CustomerRequest customerRequest = new CustomerRequest();
-        customerRequest.setId(1L);
+        customerRequest.setId(UUID.fromString("670104bb-eac6-4bb1-ae7f-df2cdd60d9ba"));
         customerRequest.setName("Bill Gates");
         customerRequest.setDocument("44867508020");
         customerRequest.setEmail("bill.gates@microsoft.com");
